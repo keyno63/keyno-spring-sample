@@ -3,6 +3,7 @@ package com.keyno.keynospringsample.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.keyno.keynospringsample.service.HelloService;
 
 import java.util.Map;
 
@@ -10,10 +11,16 @@ import java.util.Map;
 @RequestMapping("/hello")
 public class HelloController {
 
+    private HelloService helloService;
+    public HelloController(HelloService helloService)
+    {
+        this.helloService = helloService;
+    }
+
     @GetMapping("/get")
     public String get()
     {
-        return "Hello World";
+        return helloService.get();
     }
 
     @GetMapping("/map")
