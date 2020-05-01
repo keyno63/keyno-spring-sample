@@ -1,0 +1,33 @@
+version: '3'
+services:
+  docker-spring-sample:
+    container_name: "docker-spring-sample"
+    build: ./
+    volumes:
+      - ../src:/app/src
+      - ../gradle:/app/gradle
+      - ../gradlew:/app/gradlew
+      - ../build.gradle:/app/build.gradle
+    ports:
+      - 18080:8080
+    expose:
+      - 18080
+    networks:
+      - default
+    tty: true
+
+  mysql57_springtest:
+    image: mysql:5.7
+    container_name: mysql57_springtest
+    restart: always
+    ports:
+      - 33306:3306
+    networks:
+      - default
+    tty: true
+    environment:
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: user
+      MYSQL_ROOT: root
+      MYSQL_PASSWORD: user_pass
+      MYSQL_ROOT_PASSWORD: root_pass

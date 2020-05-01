@@ -1,10 +1,7 @@
-FROM openjdk:latest
+FROM adoptopenjdk/openjdk11
+#FROM openjdk:jdk-alpine
 
 RUN mkdir /app
 WORKDIR /app
-COPY ./gradlew /app
-COPY ./build.gradle /app
-COPY ./settings.gradle /app
-COPY ./src /app/src
-COPY ./gradle /app/gradle
-ENTRYPOINT ["sh", "./gradlew", "bootRun"]
+
+ENTRYPOINT ["sh", "/app/gradlew", "bootRun"]
