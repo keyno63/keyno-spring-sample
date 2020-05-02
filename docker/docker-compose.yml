@@ -31,3 +31,15 @@ services:
       MYSQL_ROOT: root
       MYSQL_PASSWORD: user_pass
       MYSQL_ROOT_PASSWORD: root_pass
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres11_springtest
+    restart: always
+    ports:
+      - 35432:5432
+    tty: true
+    environment:
+      POSTGRES_DB: sample_db
+      POSTGRES_USER: fujiwara
+      POSTGRES_PASSWORD: fujiwara
